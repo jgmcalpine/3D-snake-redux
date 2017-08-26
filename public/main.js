@@ -27,6 +27,8 @@ const newGame = () => {
   const head = new Head();
 };
 
+const board = document.querySelector('#board');
+
 const initializeKeys = () => {
   window.addEventListener('keydown', function(e) {
     if (e.keyCode === 40 && store.currentDirection !== 'up') {
@@ -41,6 +43,9 @@ const initializeKeys = () => {
     } else if (e.keyCode === 37 && store.currentDirection !== 'right') {
       e.preventDefault();
       store.currentDirection = 'left';
+    } else if (e.keyCode === 32 && store.gameOver) {
+      e.preventDefault();
+      resetBoard();
     }
   });
 };
@@ -59,7 +64,37 @@ function increaseSpeed() {
   if (store.speed > 200) store.speed -= 20;
   else if (store.speed > 100) store.speed -= 10;
   else store.speed -=5;
-  console.log(store.speed);
+}
+
+function checkEdges() {
+  if (store.head.top > 550 || store.head.top < 0 || store.head.left < 0 || store.head.left > 550) {
+    store.gameOver = true;
+    playAgainMessage();
+  }
+}
+
+function playAgainMessage() {
+  const playAgain = document.createElement('div');
+  playAgain.setAttribute('id', 'play-again');
+  playAgain.innerHTML = 'Press spacebar to play again!';
+  board.appendChild(playAgain);
+}
+
+function resetBoard() {
+  store.score = 0;
+  store.head = {top: 0, left: 0};
+  store.speed = 300;
+  store.body = {};
+  store.gameOver = false;
+  store.currentDirection = 'down';
+
+  while(board.firstChild) {
+    document.querySelector('#board').removeChild(board.firstChild)
+  }
+
+  document.querySelector('#score').innerHTML = `Score: <span>${store.score} </span>`;
+
+  newGame();
 }
 
 

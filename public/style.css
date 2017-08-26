@@ -50,3 +50,8 @@ body {
   content: '';
   box-shadow: 3em 1.5em 3em rgba(0, 0, 0, .3);
 }
+
+#play-again {
+  color: orange;
+  font-size: 3rem;
+}

@@ -31,6 +31,8 @@
         default: break;
       }
 
+      checkEdges();
+
       // Check if eating apple
       if (store.apple.top === store.head.top && store.apple.left === store.head.left) {
         incrementScore();
