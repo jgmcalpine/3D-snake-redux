@@ -31,7 +31,10 @@
         default: break;
       }
 
-      if (!store.gameOver) moveHead(this.node);
+      if (!store.gameOver) {
+        moveHead(this.node);
+        setTimeout(this.move.bind(this), store.speed);
+      }
     }
   }
 
