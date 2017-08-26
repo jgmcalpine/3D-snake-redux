@@ -31,6 +31,11 @@
         default: break;
       }
 
+      // Check if eating apple
+      if (store.apple.top === store.head.top && store.apple.left === store.head.left) {
+        setApple();
+      }
+
       if (!store.gameOver) {
         moveHead(this.node);
         setTimeout(this.move.bind(this), store.speed);

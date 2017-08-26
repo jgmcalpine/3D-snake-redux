@@ -7,6 +7,7 @@ const store = {
   speed: 300,
   currentDirection: 'down',
   gameOver: false,
+  score: 0
 }
 
 // Set the new game conditions
@@ -29,7 +30,6 @@ const newGame = () => {
 const initializeKeys = () => {
   window.addEventListener('keydown', function(e) {
     if (e.keyCode === 40 && store.currentDirection !== 'up') {
-      console.log('down down baby');
       e.preventDefault();
       store.currentDirection = 'down';
     } else if (e.keyCode === 39 && store.currentDirection !== 'left') {
@@ -41,7 +41,7 @@ const initializeKeys = () => {
     } else if (e.keyCode === 37 && store.currentDirection !== 'right') {
       e.preventDefault();
       store.currentDirection = 'left';
-    }
+    } else e.preventDefault();
   });
 };
 
