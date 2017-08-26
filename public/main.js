@@ -41,9 +41,26 @@ const initializeKeys = () => {
     } else if (e.keyCode === 37 && store.currentDirection !== 'right') {
       e.preventDefault();
       store.currentDirection = 'left';
-    } else e.preventDefault();
+    }
   });
 };
+
+function incrementScore() {
+  if (store.speed > 150) {
+    store.score += 20;
+    document.querySelector('#score span').innerHTML = store.score;
+  } else {
+    store.score += 50;
+    document.querySelector('#score span').innerHTML = store.score;
+  }
+}
+
+function increaseSpeed() {
+  if (store.speed > 200) store.speed -= 20;
+  else if (store.speed > 100) store.speed -= 10;
+  else store.speed -=5;
+  console.log(store.speed);
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
