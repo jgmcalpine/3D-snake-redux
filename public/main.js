@@ -24,9 +24,29 @@ const store = {
 const newGame = () => {
   const apple = new Apple();
   const head = new Head();
-}
+};
+
+const initializeKeys = () => {
+  window.addEventListener('keydown', function(e) {
+    if (e.keyCode === 40 && store.currentDirection !== 'up') {
+      console.log('down down baby');
+      e.preventDefault();
+      store.currentDirection = 'down';
+    } else if (e.keyCode === 39 && store.currentDirection !== 'left') {
+      e.preventDefault();
+      store.currentDirection = 'right';
+    } else if (e.keyCode === 38 && store.currentDirection !== 'down') {
+      e.preventDefault();
+      store.currentDirection = 'up';
+    } else if (e.keyCode === 37 && store.currentDirection !== 'right') {
+      e.preventDefault();
+      store.currentDirection = 'left';
+    }
+  });
+};
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  initializeKeys();
   newGame();
-})
+});
