@@ -43,6 +43,7 @@
 
       if (!store.gameOver) {
         moveHead(this.node);
+        moveSnake();
         setTimeout(this.move.bind(this), store.speed);
       }
     }
