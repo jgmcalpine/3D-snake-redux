@@ -12,7 +12,7 @@ class Body {
     store.body.push(bodyPart);
 
     board.appendChild(this.node);
-    this.node.style.transform = `translate(${store.head.left}px, ${store.head.top}px) translateZ(50px)`;
+    this.node.style.transform = `translate(0px, 0px) translateZ(50px)`;
     store.bodyPartId += 1;
   }
 }
@@ -28,13 +28,13 @@ function moveSnake() {
     store.body[i].left = store.body[i + 1].left;
   }
 
-  if (store.body.length > 1) {
+  if (store.body.length > 0) {
     let snakeNeck = store.body[store.body.length - 1];
     snakeNeck.top = store.head.top;
     snakeNeck.left = store.head.left;
   }
 
-  for (let i = 0; i < store.body.length; i += 1) {
+  for (let i = 0; i < store.body.length - 1; i += 1) {
     let currNode = document.getElementById('snake-' + i);
     currNode.style.transition = `transform ${store.speed}ms linear`;
     currNode.style.transform = `translate(${store.body[i].left}px, ${store.body[i].top}px) translateZ(50px)`;

@@ -12,6 +12,7 @@
       board.appendChild(this.node);
 
       setTimeout(this.move.bind(this), store.speed);
+      store.body.push(this.node);
     }
 
     move() {
@@ -32,6 +33,7 @@
       }
 
       checkEdges();
+      checkCannibal();
 
       // Check if eating apple
       if (store.apple.top === store.head.top && store.apple.left === store.head.left) {
@@ -42,9 +44,11 @@
       }
 
       if (!store.gameOver) {
-        moveHead(this.node);
         moveSnake();
+        moveHead(this.node);
         setTimeout(this.move.bind(this), store.speed);
+      } else {
+        clearTimeout();
       }
     }
   }

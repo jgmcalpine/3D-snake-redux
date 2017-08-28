@@ -9,6 +9,7 @@ const store = {
   score: 0,
   body: [],
   bodyPartId: 0,
+  topScore: 0,
 }
 
 // Set the new game conditions
@@ -69,8 +70,19 @@ function increaseSpeed() {
 
 function checkEdges() {
   if (store.head.top > 550 || store.head.top < 0 || store.head.left < 0 || store.head.left > 550) {
+    setTopScore();
     store.gameOver = true;
     playAgainMessage();
+  }
+}
+
+function checkCannibal() {
+  for (let i = 0; i < store.body.length; i += 1) {
+    if (store.head.top === store.body[i].top && store.head.left === store.body[i].left) {
+      setTopScore();
+      playAgainMessage();
+      store.gameOver = true;
+    }
   }
 }
 
@@ -81,6 +93,20 @@ function playAgainMessage() {
   board.appendChild(playAgain);
 }
 
+function setTopScore() {
+  console.log(store.topScore);
+  if (store.score > store.topScore) {
+    store.topScore = store.score;
+    document.querySelector('#high-score').innerHTML = `High score: <span>${store.topScore}</span>`;
+    
+    const congratsMessage = document.createElement('div');
+    congratsMessage.setAttribute('id', 'congrats');
+    congratsMessage.innerHTML = 'Great game, you are the best!'
+    board.appendChild(congratsMessage);
+  }
+}
+
+// Reset the initial properties
 function resetBoard() {
   store.score = 0;
   store.head = {top: 0, left: 0};
@@ -88,13 +114,15 @@ function resetBoard() {
   store.body = [];
   store.gameOver = false;
   store.currentDirection = 'down';
+  store.bodyPartId = 0;
 
+  // Empty the elements from the board
   while(board.firstChild) {
     document.querySelector('#board').removeChild(board.firstChild)
   }
 
+  // Reset the score display
   document.querySelector('#score').innerHTML = `Score: <span>${store.score} </span>`;
-
   newGame();
 }
 
