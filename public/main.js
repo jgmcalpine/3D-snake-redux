@@ -30,6 +30,7 @@ const newGame = () => {
 };
 
 const board = document.querySelector('#board');
+const container = document.querySelector('#container');
 
 const initializeKeys = () => {
   window.addEventListener('keydown', function(e) {
@@ -90,7 +91,7 @@ function playAgainMessage() {
   const playAgain = document.createElement('div');
   playAgain.setAttribute('id', 'play-again');
   playAgain.innerHTML = 'Press spacebar to play again!';
-  board.appendChild(playAgain);
+  container.appendChild(playAgain);
 }
 
 function setTopScore() {
@@ -98,11 +99,11 @@ function setTopScore() {
   if (store.score > store.topScore) {
     store.topScore = store.score;
     document.querySelector('#high-score').innerHTML = `High score: <span>${store.topScore}</span>`;
-    
+
     const congratsMessage = document.createElement('div');
     congratsMessage.setAttribute('id', 'congrats');
     congratsMessage.innerHTML = 'Great game, you are the best!'
-    board.appendChild(congratsMessage);
+    container.appendChild(congratsMessage);
   }
 }
 
@@ -120,6 +121,11 @@ function resetBoard() {
   while(board.firstChild) {
     document.querySelector('#board').removeChild(board.firstChild)
   }
+
+  const playAgainElem = document.getElementById('play-again');
+  const congratsElem = document.getElementById('congrats');
+  playAgainElem.remove();
+  congratsElem.remove();
 
   // Reset the score display
   document.querySelector('#score').innerHTML = `Score: <span>${store.score} </span>`;

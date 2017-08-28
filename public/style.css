@@ -19,6 +19,29 @@ body {
   position: absolute;
 }
 
+#board:before,
+#board:after {
+  position: absolute;
+  content: '';
+  float: left;
+}
+
+#board:before {
+  height: 600px;
+  width: 50px;
+  background-color: maroon;
+  transform-origin: 100% 0;
+  transform: rotateY(90deg) translateX(50px) translateZ(250px);
+}
+
+#board:after {
+  height: 50px;
+  width: 600px;
+  background-color: pink;
+  transform-origin: 100% 0;
+  transform: rotateX(-90deg) translateY(70px) translateZ(550px) translateX(-350px);
+}
+
 .scoreboard {
   text-align: center;
 }
@@ -33,7 +56,6 @@ body {
   background-color: red;
   position: absolute;
   content: '';
-  float: left;
   top: 0;
   left: 0;
   transform-style: preserve-3d;
@@ -54,6 +76,13 @@ body {
 #play-again {
   color: orange;
   font-size: 3rem;
+  position: absolute;
+  z-index: 10;
+}
+
+#congrats {
+  z-index: 0;
+  position: absolute;
 }
 
 .body-part {
@@ -63,6 +92,23 @@ body {
   position: absolute;
   float: left;
   border-radius: 10px;
+  transition: transform 300ms linear;
+  transform-style: preserve-3d;
+  transform: translateX(50px) translate(.1em);
+  box-shadow: 3em 1.5em 3em rgba(0, 0, 0, .3);
+  z-index: 1;
+}
+
+.body-part:after {
+  transform-origin: 100% 100%;
+  transform: rotateX(-90deg) translateY(50px);
+  z-index: 1;
+}
+
+.body-part:before {
+  transform-origin: 100% 0;
+  transform: rotateY(90deg) translateX(50px);
+  z-index: 1;
 }
 
 #congratsMessage {
