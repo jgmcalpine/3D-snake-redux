@@ -1,13 +1,14 @@
 // Set up store
 
 const store = {
-  body: {},
   apple: { top: 0, left: 0 },
   head: { top: 0, left: 0 },
   speed: 300,
   currentDirection: 'down',
   gameOver: false,
-  score: 0
+  score: 0,
+  body: [],
+  bodyPartId: 0,
 }
 
 // Set the new game conditions
@@ -84,7 +85,7 @@ function resetBoard() {
   store.score = 0;
   store.head = {top: 0, left: 0};
   store.speed = 300;
-  store.body = {};
+  store.body = [];
   store.gameOver = false;
   store.currentDirection = 'down';
 

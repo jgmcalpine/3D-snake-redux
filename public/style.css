@@ -55,3 +55,9 @@ body {
   color: orange;
   font-size: 3rem;
 }
+
+.body-part {
+  height: 50px;
+  width: 50px;
+  background-color: yellow;
+}

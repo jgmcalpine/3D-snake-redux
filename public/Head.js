@@ -38,6 +38,7 @@
         incrementScore();
         increaseSpeed();
         setApple();
+        growSnake();
       }
 
       if (!store.gameOver) {
