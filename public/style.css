@@ -19,14 +19,14 @@ body {
   position: absolute;
 }
 
-#board:before,
-#board:after {
+#board::before,
+#board::after {
   position: absolute;
   content: '';
   float: left;
 }
 
-#board:before {
+#board::before {
   height: 600px;
   width: 50px;
   background-color: maroon;
@@ -34,7 +34,7 @@ body {
   transform: rotateY(90deg) translateX(50px) translateZ(250px);
 }
 
-#board:after {
+#board::after {
   height: 50px;
   width: 600px;
   background-color: pink;
@@ -50,17 +50,46 @@ body {
   text-align: center;
 }
 
-#apple {
-  height: 50px;
-  width: 50px;
-  background-color: red;
+#head,
+#head:after,
+#head:before,
+#apple,
+#apple:before,
+#apple:after,
+.body-part,
+.body-part:before,
+.body-part:after {
   position: absolute;
   content: '';
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+#apple {
+  /* height: 50px;
+  width: 50px; */
+  background-color: red;
+  position: absolute;
   top: 0;
   left: 0;
   transform-style: preserve-3d;
   transform: translateX(50px) translate(.1em);
   box-shadow: 3em 1.5em 3em rgba(0, 0, 0, .3);
+  z-index: 2;
+}
+
+#apple:after {
+  background-color: #b9b991;
+  transform-origin: 100% 100%;
+  transform: rotateX(-90deg) translateY(50px);
+  z-index: 2;
+}
+
+#apple:before {
+  background-color: #b49879;
+  transform-origin: 100% 0;
+  transform: rotateY(90deg) translateX(50px);
   z-index: 2;
 }
 
@@ -103,12 +132,14 @@ body {
   transform-origin: 100% 100%;
   transform: rotateX(-90deg) translateY(50px);
   z-index: 1;
+  background-color: black;
 }
 
 .body-part:before {
   transform-origin: 100% 0;
   transform: rotateY(90deg) translateX(50px);
   z-index: 1;
+  background-color: grey;
 }
 
 #congratsMessage {
@@ -116,3 +147,4 @@ body {
   width: 100px;
   color: black;
 }
+

@@ -122,10 +122,12 @@ function resetBoard() {
     document.querySelector('#board').removeChild(board.firstChild)
   }
 
+  // Remove the elements from the container
   const playAgainElem = document.getElementById('play-again');
   const congratsElem = document.getElementById('congrats');
   playAgainElem.remove();
-  congratsElem.remove();
+  if (congratsElem) congratsElem.remove();
+  
 
   // Reset the score display
   document.querySelector('#score').innerHTML = `Score: <span>${store.score} </span>`;
