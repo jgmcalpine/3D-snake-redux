@@ -1,9 +1,3 @@
-// Class / Constructor
-// Set the apple
-  // Make sure the snake is not in a place where you set 
-    // If so, set again
-// Record new position of the apple
-
 class Apple {
   constructor() {
     this.node = document.createElement('div');
@@ -22,6 +16,7 @@ function setApple() {
   for (let i = 0; i < store.body.length; i += 1) {
     if (leftLocation === store.body[i].left && topLocation === store.body[i].top) {
       setApple();
+      i = 0;
     }
   }
 
@@ -29,3 +24,4 @@ function setApple() {
   store.apple.top = topLocation;
   appleNode.style.transform = `translate(${leftLocation}px, ${topLocation}px) translateZ(50px)`;
 }
+
