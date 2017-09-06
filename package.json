@@ -1,7 +1,7 @@
 {
   "name": "src",
   "version": "1.0.0",
-  "description": "3d snake game built with React/Redux",
+  "description": "3d snake game with React/Redux",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
