@@ -16,7 +16,6 @@ function setApple() {
   for (let i = 0; i < store.body.length; i += 1) {
     if (leftLocation === store.body[i].left && topLocation === store.body[i].top) {
       setApple();
-      i = 0;
     }
   }
 
